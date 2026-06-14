@@ -567,6 +567,10 @@ function setupControls() {
   bindWinButton();
 
   document.addEventListener('keydown', (e) => {
+    // Spiel-Tastenkürzel pausieren, solange ein Overlay (Gewinn/Über) offen ist.
+    const overlayOpen = !!document.querySelector('.overlay:not(.hidden)');
+    if (overlayOpen) return;
+
     if (e.ctrlKey && e.key.toLowerCase() === 'z') {
       e.preventDefault();
       doUndo();
