@@ -41,6 +41,7 @@ npm start          # startet einen lokalen Server auf http://localhost:4178
 | **Auto-Ablegen**     | Alle aktuell möglichen Karten auf die Foundations legen |
 | **Tipp** / `H`       | Hebt einen möglichen Zug hervor                       |
 | **Ziehen: 1/3 Karten** | Umschalten zwischen Ziehen-1 und Ziehen-3 (klassisch schwerer) |
+| **♥ Unterstützen**   | Öffnet Projektinfos, Datenschutz-Hinweise und weitere LarasDesk-Apps |
 | `Leertaste`          | Karte nachziehen                                      |
 
 Zeit und Zugzahl werden oben rechts nur **angezeigt** — sie schalten nichts frei
@@ -49,13 +50,17 @@ und bringen keine Vorteile.
 Der aktuelle Spielstand wird lokal im Browser gespeichert (localStorage) und
 beim nächsten Öffnen fortgesetzt. Nichts davon verlässt deinen Rechner.
 
+Der Unterstützen-Dialog zeigt den Spendenplatzhalter, die Privacy-Zusagen und
+weitere LarasDesk-Apps. Der Dialog lädt keine Tracker und keine externen
+Skripte; externe Links öffnen erst nach einem Klick.
+
 ## Tests
 
-Reine Spiellogik (Regeln, Züge, Undo, Gewinn) ist vollständig getestet — ohne
-Browser, mit dem Node-Test-Runner:
+Spiellogik (Regeln, Züge, Undo, Gewinn) und die wichtigsten About-Overlay-
+Regressionen sind ohne Browser mit dem Node-Test-Runner abgedeckt:
 
 ```bash
-npm test     # 30 Tests: 28 Unit + 2 Integration (Greedy-Durchläufe)
+npm test     # 32 Tests: 28 Unit + 2 Integration + 2 Overlay-Regressionen
 ```
 
 ## Aufbau
@@ -67,7 +72,9 @@ js/cards.js             Karten-/Deck-Modell (rein, kein DOM)
 js/game.js              Klondike-Spielregeln & Zustand (rein, kein DOM)
 js/render.js            zeichnet den Spielzustand ins DOM
 js/main.js              Steuerung: Maus/Tastatur, Timer, Speichern, Gewinn
-test/                   Node-Tests gegen die reine Logik
+js/about.js             Unterstützen-/Datenschutz-Overlay
+js/larasdesk.js         LarasDesk-Links, Spendenlink und Privacy-Texte
+test/                   Node-Tests für Logik und Overlay-Regressionen
 Solitär starten.bat     Windows-Startskript
 ```
 
