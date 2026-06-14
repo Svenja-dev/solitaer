@@ -11,14 +11,23 @@ const ASSETS = [
   './js/render.js',
   './js/cards.js',
   './manifest.webmanifest',
+  './icons/icon.svg',
   './icons/icon-192.png',
   './icons/icon-512.png',
   './icons/maskable-512.png',
+  './icons/apple-touch-icon.png',
 ];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
-    caches.open(CACHE).then((cache) => cache.addAll(ASSETS)).then(() => self.skipWaiting())
+    caches
+      .open(CACHE)
+      // Einzeln cachen, damit ein fehlendes Asset nicht die ganze Installation
+      // scheitern lässt (addAll ist all-or-nothing).
+      .then((cache) =>
+        Promise.allSettled(ASSETS.map((url) => cache.add(url)))
+      )
+      .then(() => self.skipWaiting())
   );
 });
 
@@ -41,7 +50,9 @@ self.addEventListener('fetch', (event) => {
   if (url.origin !== self.location.origin) return; // nur eigene Dateien
 
   event.respondWith(
-    caches.match(request).then((cached) => {
+    // ignoreSearch: Query-Parameter (?test=1, ?utm_…) sollen den Cache-Treffer
+    // nicht verhindern.
+    caches.match(request, { ignoreSearch: true }).then((cached) => {
       if (cached) return cached;
       return fetch(request)
         .then((resp) => {
