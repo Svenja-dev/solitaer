@@ -2,7 +2,7 @@
 
 Ein [LarasDesk](https://larasdesk.com)-Projekt.
 
-**▶ Direkt spielen: https://svenja-dev.github.io/solitaer/**
+**▶ [Direkt spielen](https://svenja-dev.github.io/solitaer/)**
 
 Klassisches Klondike-Solitär als Browser-Spiel. Keine Werbung, keine
 Online-Verbindung, keine Punktewertung, die zu irgendwelchen Vorteilen führt —
