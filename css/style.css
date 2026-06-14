@@ -50,7 +50,10 @@ body {
   display: flex;
   align-items: center;
   gap: 22px;
-  padding: 12px 22px;
+  /* Safe-Area-Insets: verhindert, dass die Topbar unter Notch/Statusleiste
+     rutscht (iOS Vollbild-PWA mit viewport-fit=cover). */
+  padding: calc(12px + env(safe-area-inset-top)) calc(22px + env(safe-area-inset-right))
+    12px calc(22px + env(safe-area-inset-left));
   background: rgba(0, 0, 0, 0.22);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
   flex-wrap: wrap;
@@ -327,7 +330,7 @@ body {
 /* ------------------------------------------------------------------- Footer */
 .site-footer {
   text-align: center;
-  padding: 14px 12px 20px;
+  padding: 14px 12px calc(20px + env(safe-area-inset-bottom));
   font-size: 13px;
   color: rgba(255, 255, 255, 0.55);
   letter-spacing: 0.3px;
@@ -415,7 +418,11 @@ body {
     --stack-offset: 17px;
     --stack-offset-down: 7px;
   }
-  .topbar { gap: 12px; padding: 9px 12px; }
+  .topbar {
+    gap: 12px;
+    padding: calc(9px + env(safe-area-inset-top)) calc(12px + env(safe-area-inset-right))
+      9px calc(12px + env(safe-area-inset-left));
+  }
   .stats { width: 100%; margin-left: 0; }
   .card .corner { font-size: 13px; }
   .card .center-suit { font-size: 34px; }
