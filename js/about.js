@@ -32,11 +32,15 @@ function populate() {
       donate.href = '#';
       donate.classList.add('is-placeholder');
       donate.title = 'Spendenlink wird noch eingerichtet';
+      let hintTimer = null;
       donate.addEventListener('click', (e) => {
         e.preventDefault();
         donate.textContent = '♥ Spendenlink folgt in Kürze';
-        setTimeout(() => {
+        // Bei schnellem Mehrfachklick alten Timer verwerfen (kein Flackern).
+        if (hintTimer) clearTimeout(hintTimer);
+        hintTimer = setTimeout(() => {
           donate.textContent = '♥ Spende via PayPal';
+          hintTimer = null;
         }, 2500);
       });
     }
@@ -73,15 +77,32 @@ function populate() {
   }
 }
 
+// Element, das vor dem Öffnen den Fokus hatte — dorthin kehren wir zurück.
+let lastFocused = null;
+
+function isOpen() {
+  const overlay = document.getElementById('about-overlay');
+  return overlay && !overlay.classList.contains('hidden');
+}
+
 function openAbout() {
   populate();
   const overlay = document.getElementById('about-overlay');
-  if (overlay) overlay.classList.remove('hidden');
+  if (!overlay) return;
+  lastFocused = document.activeElement;
+  overlay.classList.remove('hidden');
+  // Fokus für Barrierefreiheit ins Overlay legen.
+  document.getElementById('btn-about-close')?.focus();
 }
 
 function closeAbout() {
   const overlay = document.getElementById('about-overlay');
   if (overlay) overlay.classList.add('hidden');
+  // Fokus dorthin zurückgeben, wo er vorher war.
+  if (lastFocused && typeof lastFocused.focus === 'function') {
+    lastFocused.focus();
+    lastFocused = null;
+  }
 }
 
 /** Verdrahtet Button, Schließen-Kreuz, Hintergrund-Klick und Escape. */
@@ -98,6 +119,8 @@ export function setupAbout() {
   }
 
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeAbout();
+    // Nur reagieren, wenn das About-Overlay tatsächlich offen ist —
+    // sonst nicht mit anderen Overlays (Gewinn) kollidieren.
+    if (e.key === 'Escape' && isOpen()) closeAbout();
   });
 }
