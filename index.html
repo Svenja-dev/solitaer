@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Solitär</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <h1 class="logo">Solitär</h1>
+      <div class="controls">
+        <button id="btn-new" class="btn" type="button">Neues Spiel</button>
+        <button id="btn-undo" class="btn" type="button" disabled>Rückgängig</button>
+        <button id="btn-auto" class="btn" type="button" title="Alle möglichen Karten automatisch ablegen">Auto-Ablegen</button>
+        <button id="btn-hint" class="btn" type="button">Tipp</button>
+        <label class="draw-toggle">
+          <span>Ziehen:</span>
+          <button id="btn-draw" class="btn btn-toggle" type="button" data-draw="1">1 Karte</button>
+        </label>
+      </div>
+      <div class="stats">
+        <span class="stat" title="Vergangene Zeit">⏱ <span id="stat-time">0:00</span></span>
+        <span class="stat" title="Anzahl Züge">Züge: <span id="stat-moves">0</span></span>
+      </div>
+    </header>
+
+    <main id="board" class="board" aria-label="Spielfeld">
+      <!-- Karten werden per JS gerendert -->
+    </main>
+
+    <div id="win-overlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="win-title">
+      <div class="overlay-card">
+        <h2 id="win-title">Gewonnen!</h2>
+        <p id="win-detail"></p>
+        <button id="btn-win-again" class="btn btn-primary" type="button">Noch eine Runde</button>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      Ein <a href="https://larasdesk.com" target="_blank" rel="noopener noreferrer">LarasDesk</a>-Projekt
+    </footer>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "name": "solitaer",
+  "version": "1.0.0",
+  "description": "Klondike-Solitär als Browser-Spiel — ohne Werbung, ohne Wertung mit Vorteilen.",
+  "type": "module",
+  "scripts": {
+    "test": "node --test \"test/*.test.mjs\"",
+    "start": "npx --yes http-server -p 4178 -c-1"
+  },
+  "license": "MIT",
+  "private": true
+}
