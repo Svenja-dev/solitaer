@@ -1,6 +1,6 @@
 // Service Worker: macht das Spiel offline spielbar (App-Shell-Caching).
 // Versionsnummer bei jeder Asset-Änderung erhöhen, damit der Cache erneuert wird.
-const CACHE = 'solitaer-v1';
+const CACHE = 'solitaer-v2';
 
 const ASSETS = [
   './',
@@ -22,10 +22,18 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches
       .open(CACHE)
-      // Einzeln cachen, damit ein fehlendes Asset nicht die ganze Installation
-      // scheitern lässt (addAll ist all-or-nothing).
+      // Einzeln cachen, aber fehlende App-Shell-Assets bewusst als Fehler
+      // behandeln: Offline-Fähigkeit ist nur mit vollständigem Cache korrekt.
       .then((cache) =>
-        Promise.allSettled(ASSETS.map((url) => cache.add(url)))
+        Promise.allSettled(ASSETS.map((url) => cache.add(url))).then((results) => {
+          const failedAssets = results
+            .map((result, index) => (result.status === 'rejected' ? ASSETS[index] : null))
+            .filter(Boolean);
+
+          if (failedAssets.length > 0) {
+            throw new Error(`App-Shell-Cache unvollständig: ${failedAssets.join(', ')}`);
+          }
+        })
       )
       .then(() => self.skipWaiting())
   );

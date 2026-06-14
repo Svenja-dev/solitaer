@@ -16,8 +16,9 @@ Stand: Juni 2026.
 
 1. **Google-Play-Entwicklerkonto** — 25 USD einmalig (keine Jahresgebühr).
    Registrierung: https://play.google.com/console/signup
-2. **Identitätsprüfung** — seit September 2026 Pflicht: echter Name + Ausweis.
-   Das betrifft nur dich als Entwickler gegenüber Google, nicht deine Nutzer.
+2. **Identitätsprüfung** — die Play Console führt dich durch die aktuell
+   erforderlichen Nachweise. Das betrifft nur dich als Entwickler gegenüber
+   Google, nicht deine Nutzer.
 3. **Node.js** (hast du) und **JDK 17+** für das Build-Tool.
 
 ---
