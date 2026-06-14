@@ -28,6 +28,7 @@
           <span>Ziehen:</span>
           <button id="btn-draw" class="btn btn-toggle" type="button" data-draw="1">1 Karte</button>
         </label>
+        <button id="btn-about" class="btn btn-heart" type="button" title="Unterstützen & mehr von LarasDesk">♥ Unterstützen</button>
       </div>
       <div class="stats">
         <span class="stat" title="Vergangene Zeit">⏱ <span id="stat-time">0:00</span></span>
@@ -44,6 +45,35 @@
         <h2 id="win-title">Gewonnen!</h2>
         <p id="win-detail"></p>
         <button id="btn-win-again" class="btn btn-primary" type="button">Noch eine Runde</button>
+      </div>
+    </div>
+
+    <div id="about-overlay" class="overlay hidden" role="dialog" aria-modal="true" aria-labelledby="about-title">
+      <div class="overlay-card about-card">
+        <button id="btn-about-close" class="overlay-close" type="button" aria-label="Schließen">×</button>
+        <h2 id="about-title">Solitär</h2>
+
+        <section class="about-section about-privacy">
+          <h3>Fair &amp; privat</h3>
+          <ul id="about-privacy-list"></ul>
+        </section>
+
+        <section class="about-section about-donate">
+          <h3>Gefällt dir das Spiel?</h3>
+          <p>Es ist kostenlos und bleibt es. Wenn du magst, kannst du mir einen
+             Kaffee spendieren — freiwillig, ohne Konto, ohne Gegenleistung.</p>
+          <a id="about-donate-link" class="btn btn-primary donate-btn" target="_blank" rel="noopener noreferrer">♥ Spende via PayPal</a>
+        </section>
+
+        <section class="about-section about-apps">
+          <h3>Mehr von LarasDesk</h3>
+          <p class="about-apps-intro">Kleine, ehrliche Apps — alle ohne Werbung und ohne Datensammlung.</p>
+          <div id="about-apps-list" class="apps-grid"></div>
+        </section>
+
+        <p class="about-footnote">
+          <a href="https://larasdesk.com" target="_blank" rel="noopener noreferrer">larasdesk.com</a>
+        </p>
       </div>
     </div>
 

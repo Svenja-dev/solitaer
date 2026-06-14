@@ -15,6 +15,7 @@ import {
   canMoveToTableau,
 } from './game.js';
 import { renderBoard, renderStats } from './render.js';
+import { setupAbout } from './about.js';
 
 const SAVE_KEY = 'solitaer-save-v1';
 const PREF_KEY = 'solitaer-pref-v1';
@@ -591,6 +592,7 @@ function setupControls() {
 
 syncDrawButton();
 setupControls();
+setupAbout();
 restoreOrNew();
 
 // Test-Brücke: nur aktiv mit ?test=1 in der URL. In Produktion ein No-Op,
