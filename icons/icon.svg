@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Hintergrund: Filzgrün, abgerundet (maskable safe zone beachtet) -->
+  <rect width="512" height="512" rx="96" fill="#0b5e34"/>
+  <rect width="512" height="512" rx="96" fill="url(#g)"/>
+  <defs>
+    <radialGradient id="g" cx="50%" cy="34%" r="75%">
+      <stop offset="0%" stop-color="#0e7a43"/>
+      <stop offset="100%" stop-color="#083f24"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Hintere Karte (leicht gedreht) -->
+  <g transform="rotate(-12 256 280)">
+    <rect x="150" y="150" width="212" height="296" rx="22" fill="#f4ede0" opacity="0.55"/>
+  </g>
+
+  <!-- Vordere Karte -->
+  <g transform="rotate(6 256 280)">
+    <rect x="150" y="140" width="212" height="300" rx="22" fill="#fdfdfa" stroke="#d8d2c4" stroke-width="2"/>
+    <!-- Pik-Symbol mittig -->
+    <path d="M256 196
+             C 256 196, 196 252, 196 296
+             a 32 32 0 0 0 56 21
+             c -4 22, -14 34, -24 44
+             l 56 0
+             c -10 -10, -20 -22, -24 -44
+             a 32 32 0 0 0 56 -21
+             C 316 252, 256 196, 256 196 Z"
+          fill="#16202b"/>
+    <!-- Ecken-Buchstabe A + kleines Pik -->
+    <text x="172" y="186" font-family="Georgia, serif" font-size="44" font-weight="700" fill="#16202b">A</text>
+    <text x="340" y="420" font-family="Georgia, serif" font-size="44" font-weight="700" fill="#16202b" transform="rotate(180 340 405)">A</text>
+  </g>
+</svg>
