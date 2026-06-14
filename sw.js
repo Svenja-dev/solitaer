@@ -1,6 +1,6 @@
 // Service Worker: macht das Spiel offline spielbar (App-Shell-Caching).
 // Versionsnummer bei jeder Asset-Änderung erhöhen, damit der Cache erneuert wird.
-const CACHE = 'solitaer-v2';
+const CACHE = 'solitaer-v5';
 
 const ASSETS = [
   './',
@@ -10,6 +10,8 @@ const ASSETS = [
   './js/game.js',
   './js/render.js',
   './js/cards.js',
+  './js/about.js',
+  './js/larasdesk.js',
   './manifest.webmanifest',
   './icons/icon.svg',
   './icons/icon-192.png',

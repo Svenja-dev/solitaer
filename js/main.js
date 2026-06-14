@@ -15,6 +15,7 @@ import {
   canMoveToTableau,
 } from './game.js';
 import { renderBoard, renderStats } from './render.js';
+import { setupAbout } from './about.js';
 
 const SAVE_KEY = 'solitaer-save-v1';
 const PREF_KEY = 'solitaer-pref-v1';
@@ -566,6 +567,11 @@ function setupControls() {
   bindWinButton();
 
   document.addEventListener('keydown', (e) => {
+    // Spiel-Tastenkürzel pausieren nur beim About-Dialog; das Gewinn-Overlay
+    // behält das bisherige Tastaturverhalten.
+    const aboutOpen = !!document.querySelector('#about-overlay:not(.hidden)');
+    if (aboutOpen) return;
+
     if (e.ctrlKey && e.key.toLowerCase() === 'z') {
       e.preventDefault();
       doUndo();
@@ -591,6 +597,7 @@ function setupControls() {
 
 syncDrawButton();
 setupControls();
+setupAbout();
 restoreOrNew();
 
 // Test-Brücke: nur aktiv mit ?test=1 in der URL. In Produktion ein No-Op,

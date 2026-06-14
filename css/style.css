@@ -137,6 +137,10 @@ body {
   padding: 11px 22px;
 }
 
+.btn-heart {
+  background: linear-gradient(180deg, #b6543f, #8f3a2c);
+}
+
 /* ------------------------------------------------------------------- Board */
 .board {
   flex: 1;
@@ -397,6 +401,166 @@ body {
   border-radius: 3px;
   z-index: 9000;
   pointer-events: none;
+}
+
+/* ------------------------------------------------------- About-Overlay */
+.about-card {
+  position: relative;
+  text-align: left;
+  max-width: 460px;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 30px 32px;
+}
+
+.about-card h2 {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.overlay-close {
+  position: absolute;
+  top: 12px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  color: #f3f7f3;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+
+.overlay-close:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.about-section {
+  margin-bottom: 22px;
+}
+
+.about-section:last-of-type {
+  margin-bottom: 6px;
+}
+
+.about-section h3 {
+  margin: 0 0 8px;
+  font-size: 17px;
+  color: var(--gold);
+}
+
+.about-section p {
+  margin: 0 0 14px;
+  font-size: 14.5px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+/* Privacy-Liste */
+.about-privacy ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.about-privacy li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 7px;
+  font-size: 14.5px;
+}
+
+.about-privacy li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: #6fcf97;
+  font-weight: 700;
+}
+
+/* Spenden-Button */
+.donate-btn {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+}
+
+.donate-btn.is-placeholder {
+  opacity: 0.92;
+}
+
+/* App-Familie */
+.about-apps-intro {
+  margin-bottom: 12px !important;
+}
+
+.apps-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.app-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 11px 13px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.12s ease, transform 0.08s ease;
+}
+
+.app-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.app-dot {
+  flex: 0 0 auto;
+  width: 12px;
+  height: 12px;
+  margin-top: 4px;
+  border-radius: 50%;
+  background: var(--app-accent, var(--gold));
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+}
+
+.app-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.app-text strong {
+  font-size: 15px;
+  color: #fff;
+}
+
+.app-tag {
+  font-size: 13px;
+  opacity: 0.78;
+  line-height: 1.35;
+  margin-top: 1px;
+}
+
+.about-footnote {
+  text-align: center;
+  margin: 14px 0 0 !important;
+  font-size: 13px;
+}
+
+.about-footnote a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.about-footnote a:hover {
+  text-decoration: underline;
 }
 
 /* ----------------------------------------------------------- Responsive */
