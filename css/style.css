@@ -582,7 +582,11 @@ body {
     --stack-offset: 17px;
     --stack-offset-down: 7px;
   }
-  .topbar { gap: 12px; padding: 9px 12px; }
+  .topbar {
+    gap: 12px;
+    padding: calc(9px + env(safe-area-inset-top)) calc(12px + env(safe-area-inset-right))
+      9px calc(12px + env(safe-area-inset-left));
+  }
   .stats { width: 100%; margin-left: 0; }
   .card .corner { font-size: 13px; }
   .card .center-suit { font-size: 34px; }

@@ -87,7 +87,8 @@
     // Service Worker registrieren (macht die App offline-fähig & installierbar).
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js').catch(() => {
+        navigator.serviceWorker.register('sw.js').catch((error) => {
+          console.warn('Service Worker konnte nicht registriert werden:', error);
           /* SW optional — Spiel läuft auch ohne (z. B. unter file://) */
         });
       });
